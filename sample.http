@@ -1,0 +1,43 @@
+### kintone REST API Requests - App Records
+@domain = your_subdomain.kintone.com
+@appId = your_sales_deals_app_id
+@apiToken1 = your_sales_deals_app_api_token
+@apiToken2 = your_company_list_app_api_token
+@userCode = your_user_code
+
+### GET/records
+GET https://{{domain}}/k/v1/records.json?app={{appId}}
+X-Cybozu-API-Token: {{apiToken1}}
+
+### POST/records
+POST https://{{domain}}/k/v1/records.json
+X-Cybozu-API-Token: {{apiToken1}}, {{apiToken2}}
+Content-Type: application/json
+
+{
+  "app": {{appId}},
+  "records": [
+    {
+      "Company_Name_Search": {
+        "value": "Kintone"
+      },
+      "Deal_Name": {
+        "value": "Kintone app creation"
+      },
+      "Rep": {
+        "value": [{"code": "{{userCode}}"}]
+      }
+    },
+    {
+      "Company_Name_Search": {
+        "value": "Cybozu"
+      },
+      "Deal_Name": {
+        "value": "Kintone JavaScript customization"
+      },
+      "Rep": {
+        "value": [{"code": "{{userCode}}"}]
+      }
+    }
+  ]
+}
